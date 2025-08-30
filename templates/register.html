@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register User</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <meta name="csrf-token" content="{{ csrf_token }}">
+    </head>
+<body>
+    <div class="container">
+        <h2>User Registration</h2>
+        <form id="userForm" method="post">
+            {% csrf_token %}
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <input type="text" name="first_name" placeholder="First Name" required>
+            <input type="text" name="last_name" placeholder="Last Name" required>
+            <input type="text" name="address" placeholder="Address" required>
+            <input type="text" name="phone" placeholder="Phone (max 10 digits)" maxlength="10" required>
+            
+            <div class="camera-section">
+                <video id="video" width="320" height="240" autoplay></video><br>
+                <button type="button" onclick="capturePhoto()">Capture Photo</button><br>
+                <canvas id="canvas" width="320" height="240" style="display:none;"></canvas>
+            </div>
+            
+            <input type="submit" value="Register User">
+        </form>
+
+        <div id="message"></div>
+    </div>
+
+    <script src="{% static 'register.js' %}"></script>
+</body>
+</html>
